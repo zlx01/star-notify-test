@@ -1,0 +1,15 @@
+name: star notification
+
+on:
+ watch:
+  types: [started]
+
+jobs:
+  notify:
+   runs-on: ubuntu-latest
+   steps:
+   - name: send message
+     run: |
+       repo=${GITHUB_REPOSITORY//\//:}
+       actor=$GITHUB_ACTOR
+       curl https://lancekee.xyz/api/app/github/star/FVwHJXFvDWPO/$actor%20starred%20your%20repository/$repo
